@@ -41,6 +41,16 @@ workers = {
         'ефективність': 99
     }
 }
+def worker_max_efficiency(workers):
+    maximum = 0
+    monster = ''
+    for worker in workers:
+        if workers[worker]['ефективність'] > maximum:
+            maximum = workers[worker]['ефективність']
+            monster = worker
+
+    return monster
+
 while True:
     menu = input(
         'Please select the action you wish to take: \n'
@@ -48,7 +58,8 @@ while True:
         '2. Edit employee data \n'
         '3. Delete employee data \n'
         '4. Add employee data \n'
-        '5. Finish work\n')
+        '5. The most efficient employee is ... \n'
+        '6. Finish work\n')
     match menu:
         case '1':
             sorted_workers = dict(sorted(workers.items()))
@@ -59,23 +70,28 @@ while True:
             worker = input('Please enter the last name of the employee: ')
             if worker not in workers:
                 print('We do not have such an employee.')
+                print()
             else:
                 print(workers[worker])
                 option = input("Enter the parameter you want to change (посада, досвід роботи, портфоліо, коефіцієнт ефективності, стек технологій чи зарплата) or 'break' for menu: ")
                 if option not in workers[worker]:
                     print('You entered the wrong parameter.')
+                    print()
                 else:
                     value = input('Enter the value for the parameter: ')
                     workers[worker][option] = value
                     print(f'Employee {worker} data has been successfully edited. Updated employee data: ')
                     print(workers[worker])
+                    print()
         case '3':
             worker = input('Please enter the last name of the employee for ELEMINATING!!! ')
             if worker not in workers:
                 print('We do not have such an employee.')
+                print()
             else:
                 workers.pop(worker)
                 print(f'Employee {worker} ELEMINATED successfully')
+                print()
         case '4':
             worker = input('Please enter the last name of the new employee: ')
             position = input(f'Please enter position of {worker}: ')
@@ -92,9 +108,16 @@ while True:
             workers[worker]['зарплата'] = salary
             workers[worker]['ефективність'] = effficiency
             print(f'Data {worker} entered successfully: {workers[worker]}')
-        case '5':
+            print()
+        case '6':
             print('Have a nice day!')
             break
+        case '5':
+            print('And the most efficient employee is ... (drumroll) ')
+            print(f'{worker_max_efficiency(workers)}')
+            print()
+
+
 
 
 
