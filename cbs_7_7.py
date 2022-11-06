@@ -42,14 +42,12 @@ workers = {
     }
 }
 def worker_max_efficiency(workers):
-    maximum = 0
-    monster = ''
+    monster_dict = {}
     for worker in workers:
-        if workers[worker]['ефективність'] > maximum:
-            maximum = workers[worker]['ефективність']
-            monster = worker
-
-    return monster
+        monster_dict.update({workers[worker]['ефективність']:worker})
+    sorted_monsters = dict(sorted(monster_dict.items(), reverse=True))
+    for key, value in sorted_monsters.items():
+        print(value)
 
 while True:
     menu = input(
@@ -114,7 +112,7 @@ while True:
             break
         case '5':
             print('And the most efficient employee is ... (drumroll) ')
-            print(f'{worker_max_efficiency(workers)}')
+            worker_max_efficiency(workers)
             print()
 
 
