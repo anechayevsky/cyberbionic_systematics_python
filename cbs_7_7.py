@@ -52,7 +52,7 @@ def worker_max_efficiency(workers):
 while True:
     menu = input(
         'Please select the action you wish to take: \n'
-        '1. View a list of employees \n'
+        '1. View a list of employees sorted by name \n'
         '2. Edit employee data \n'
         '3. Delete employee data \n'
         '4. Add employee data \n'
