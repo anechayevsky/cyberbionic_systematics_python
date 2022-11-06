@@ -1,11 +1,8 @@
-def average(a, b, c):
-    return (a + b + c) / 3
-
 
 def main():
     while True:
-        a, b, c = map(float, input('Введіть три числа через пробіл: ').split())
-        print(f'Середнє арифметичне дорівнює: {average(a, b, c)}')
+        numbers = [int(value) for value in input('Введіть будь-яку кількість чисел через пробіл: ').split()]
+        print(f'Середнє арифметичне дорівнює: {sum(numbers)/len(numbers)}')
         option = input('Якщо бажаєте завершити роботу, наберіть "off" чи будь-що, якщо бажаєте продовжувати')
         match option:
             case 'off':
